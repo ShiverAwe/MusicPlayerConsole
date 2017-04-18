@@ -18,7 +18,7 @@ public class NoteLine {
     }
     boolean sustain = true;
 
-    EasyArray<Sound> melody = new EasyArray<Sound>();
+    SafeArrayList<Sound> melody = new SafeArrayList<Sound>();
     
     void ensureSize(int size){
         for (int i = 0; i < size - melody.size() + 1; i++) {
@@ -28,7 +28,7 @@ public class NoteLine {
         
     void setSound(int position, Sound sound){
         if (count<position) count = position+32;
-        melody.safeSet(position, sound);
+        melody.set(position, sound);
     }
 
     void setSound(int position, String ... values){
@@ -38,15 +38,15 @@ public class NoteLine {
     public OnOffTable toOnOffTable(){
         OnOffTable result = new OnOffTable();
         for (int i = 0; i < count; i++) {
-            Sound sound = melody.safeGet(i);
+            Sound sound = melody.get(i);
             if (sound != null)
             for(SingleNote note : sound.notes){
-                if (result.ons.safeGet(i) == null)
-                    result.ons.safeSet(i, new ArrayDeque<Integer>());
-                result.ons.safeGet(i).push(note.value);
-                if (result.offs.safeGet(i + (int) (note.length*(sustain?1.5:1))) == null)
-                    result.offs.safeSet(i + (int) (note.length*(sustain?1.5:1)), new ArrayDeque<Integer>());
-                result.offs.safeGet(i + (int) (note.length*(sustain?1.5:1))).push(note.value);
+                if (result.ons.get(i) == null)
+                    result.ons.set(i, new ArrayDeque<Integer>());
+                result.ons.get(i).push(note.value);
+                if (result.offs.get(i + (int) (note.length*(sustain?1.5:1))) == null)
+                    result.offs.set(i + (int) (note.length*(sustain?1.5:1)), new ArrayDeque<Integer>());
+                result.offs.get(i + (int) (note.length*(sustain?1.5:1))).push(note.value);
 
             }
             else {
