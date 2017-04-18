@@ -1,3 +1,5 @@
+package ru.spb.shefer;
+
 import java.io.PrintWriter;
 import java.util.Scanner;
 

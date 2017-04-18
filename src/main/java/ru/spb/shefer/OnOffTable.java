@@ -1,5 +1,6 @@
+package ru.spb.shefer;
+
 import java.util.ArrayDeque;
-import java.util.ArrayList;
 
 /**
  * Created by Владимир on 17.04.2017.

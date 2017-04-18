@@ -1,3 +1,5 @@
+package ru.spb.shefer;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sound.midi.MidiChannel;
