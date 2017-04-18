@@ -1,3 +1,5 @@
+package ru.spb.shefer;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sound.midi.MidiChannel;
@@ -69,15 +71,15 @@ public class Player {
         OnOffTable onOffTable = melody.toOnOffTable();
         for (int i = 0; i < count; i++) {
            // channels[1].noteOn( i ,100);
-            if (onOffTable.ons.safeGet(i) != null)
-            while (!onOffTable.ons.safeGet(i).isEmpty()){
-                System.out.println(i + " : on : " + onOffTable.ons.safeGet(i).peek());
-                channels[1].noteOn( onOffTable.ons.safeGet(i).pop() ,100);
+            if (onOffTable.ons.get(i) != null)
+            while (!onOffTable.ons.get(i).isEmpty()){
+                System.out.println(i + " : on : " + onOffTable.ons.get(i).peek());
+                channels[1].noteOn( onOffTable.ons.get(i).pop() ,100);
             } else System.out.println(i + " : on : null ");
-            if (onOffTable.offs.safeGet(i) != null)
+            if (onOffTable.offs.get(i) != null)
             while (!onOffTable.offs.get(i).isEmpty()){
-                System.out.println(i + " : off : " + onOffTable.offs.safeGet(i).peek());
-                channels[1].noteOff(onOffTable.offs.safeGet(i).pop());
+                System.out.println(i + " : off : " + onOffTable.offs.get(i).peek());
+                channels[1].noteOff(onOffTable.offs.get(i).pop());
             } else System.out.println(i + " : off : null ");
             try {
                 Thread.sleep(unitLength);

@@ -1,3 +1,5 @@
+package ru.spb.shefer;
+
 import java.util.ArrayList;
 
 /**
